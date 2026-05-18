@@ -43,18 +43,95 @@
                 linear-gradient(180deg, #000 0%, #02040a 58%, #000 100%);
         }
 
-        .app-header {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            z-index: 1000;
-            background: rgba(0,0,0,0.8);
-            backdrop-filter: blur(8px);
-            -webkit-backdrop-filter: blur(8px);
-            border-bottom: 1px solid rgba(255,255,255,0.12);
-            box-shadow: 0 14px 32px rgba(0,0,0,0.55);
-        }
+            .app-header {
+                position: fixed;
+                top: 0;
+                left: 0;
+                width: 100%;
+                z-index: 1000;
+                background: rgba(0,0,0,0.8);
+                backdrop-filter: blur(8px);
+                -webkit-backdrop-filter: blur(8px);
+                border-bottom: 1px solid rgba(255,255,255,0.12);
+                box-shadow: 0 14px 32px rgba(0,0,0,0.55);
+            }
+
+            .tabs-section {
+                background: rgba(0,0,0,0.8);
+                backdrop-filter: blur(8px);
+                -webkit-backdrop-filter: blur(8px);
+                border-bottom: 1px solid rgba(255,255,255,0.12);
+                box-shadow: 0 14px 32px rgba(0,0,0,0.55);
+                padding: 10px 0;
+                position: sticky;
+                top: 100px; /* Ajustar según la altura del header */
+                z-index: 999;
+            }
+
+            .tabs-container {
+                width: min(1120px, 100%);
+                margin: 0 auto;
+                padding: 0 12px;
+                display: flex;
+                justify-content: space-around;
+                gap: 10px;
+                overflow-x: auto;
+                -webkit-overflow-scrolling: touch;
+                scrollbar-width: none; /* Firefox */
+            }
+
+            .tabs-container::-webkit-scrollbar {
+                display: none; /* Chrome, Safari, Opera */
+            }
+
+            .tab-button {
+                background-color: rgba(255,255,255,0.08);
+                color: var(--text);
+                border: 1px solid rgba(255,255,255,0.12);
+                border-radius: 20px;
+                padding: 8px 15px;
+                cursor: pointer;
+                font-size: 0.9rem;
+                font-weight: 600;
+                white-space: nowrap;
+                transition: background-color 0.3s ease, border-color 0.3s ease;
+            }
+
+            .tab-button:hover {
+                background-color: rgba(255,255,255,0.15);
+                border-color: var(--cyan);
+            }
+
+            .tab-button.active {
+                background-color: var(--cyan);
+                color: #000;
+                border-color: var(--cyan);
+            }
+
+            .whatsapp-button {
+                display: block;
+                width: fit-content;
+                margin: 10px auto 0;
+                padding: 10px 20px;
+                background-color: var(--whatsapp);
+                color: #fff;
+                text-decoration: none;
+                border-radius: 25px;
+                font-weight: 700;
+                font-size: 1rem;
+                display: flex;
+                align-items: center;
+                gap: 8px;
+                transition: background-color 0.3s ease;
+            }
+
+            .whatsapp-button:hover {
+                background-color: #1DA851;
+            }
+
+            .whatsapp-button i {
+                font-size: 1.2rem;
+            }
 
         .header-inner {
             width: min(1120px, 100%);
@@ -112,49 +189,12 @@
             font-weight: 700;
         }
 
-        .search-box {
-            position: relative;
-            width: 100%;
-        }
 
-        #searchInput {
-            width: 100%;
-            appearance: none;
-            border: 1px solid rgba(0,229,255,0.26);
-            outline: none;
-            border-radius: 14px;
-            background: rgba(255,255,255,0.06);
-            color: var(--text);
-            padding: 10px 40px 10px 12px;
-            font-size: 0.90rem;
-            line-height: 1.1;
-        }
-
-        #searchInput:focus {
-            border-color: var(--cyan);
-            box-shadow: 0 0 0 3px rgba(0,229,255,0.11);
-        }
-
-        #clearSearch {
-            position: absolute;
-            right: 6px;
-            top: 50%;
-            transform: translateY(-50%);
-            width: 29px;
-            height: 29px;
-            border: 0;
-            border-radius: 10px;
-            background: rgba(255,255,255,0.12);
-            color: #fff;
-            font-size: 1rem;
-            cursor: pointer;
-            display: none;
-        }
 
         main.page {
             width: min(1120px, 100%);
             margin: 0 auto;
-            padding: 132px 14px 38px;
+            padding: 180px 14px 38px; /* Ajustado para el nuevo header y tabs */
         }
 
         .summary-panel {
@@ -320,27 +360,27 @@
             padding: 26px 10px 8px;
         }
 
-        @media (max-width: 380px) {
-            main.page { padding-top: 142px; }
-        }
+            @media (max-width: 380px) {
+                main.page { padding-top: 190px; }
+            }
 
-        @media (min-width: 700px) {
-            .header-inner { padding: 9px 20px 10px; }
-            main.page { padding: 126px 22px 42px; }
-            .grid { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 18px; }
-            .product-card { grid-template-columns: 150px 1fr; min-height: 208px; }
-            .image-wrap { width: 150px; min-height: 184px; }
-            .product-card h2 { font-size: 1.05rem; }
-            .action-row { grid-template-columns: 1fr 1fr; }
-        }
+            @media (min-width: 700px) {
+                .header-inner { padding: 9px 20px 10px; }
+                main.page { padding: 170px 22px 42px; }
+                .grid { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 18px; }
+                .product-card { grid-template-columns: 150px 1fr; min-height: 208px; }
+                .image-wrap { width: 150px; min-height: 184px; }
+                .product-card h2 { font-size: 1.05rem; }
+                .action-row { grid-template-columns: 1fr 1fr; }
+            }
 
-        @media (min-width: 1050px) {
-            main.page { padding-top: 124px; }
-            .grid { grid-template-columns: repeat(3, minmax(0, 1fr)); }
-            .product-card { grid-template-columns: 1fr; }
-            .image-wrap { width: 100%; min-height: 210px; }
-            .action-row { grid-template-columns: 1fr; }
-        }
+            @media (min-width: 1050px) {
+                main.page { padding-top: 160px; }
+                .grid { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+                .product-card { grid-template-columns: 1fr; }
+                .image-wrap { width: 100%; min-height: 210px; }
+                .action-row { grid-template-columns: 1fr; }
+            }
     </style>
 
 </head>
@@ -352,28 +392,29 @@
                     <span class="eyebrow">Ofertas de Hoy</span>
                     <h1>Descuentos Mercado Libre Luxon</h1>
                 </div>
-                <div class="mini-stat"><strong>23</strong><span>productos</span></div>
+                <div class="mini-stat"><strong></strong><span>productos</span></div>
             </div>
+            <a href="https://whatsapp.com/channel/0029VbCdqxLDDmFRRTP9xs1W" target="_blank" rel="noopener noreferrer" class="whatsapp-button">
+                <i class="fab fa-whatsapp"></i> Recibir ofertas por WhatsApp
+            </a>
 
-
-        </div>
         </div>
         </header>
 
-        <section class="search-section">
-            <div class="search-input-container">
-                <input id="searchInput" type="search" placeholder="Buscar oferta en Mercado Libre..." autocomplete="off">
-                <button id="searchButton" type="button" aria-label="Buscar"><i class="fas fa-search"></i></button>
-                <button id="clearSearch" type="button" aria-label="Limpiar búsqueda">×</button>
-            </div>
-            <div id="searchIframeContainer" style="display: none; margin-top: 15px;">
-                <iframe id="searchIframe" style="width: 100%; height: 800px; border: none; border-radius: 18px; background-color: #000;" allowfullscreen></iframe>
+        <section class="tabs-section">
+            <div class="tabs-container">
+                <button class="tab-button active" data-category="all">🌐 Todas</button>
+                <button class="tab-button" data-category="tecnologia">🎧 Tecnología</button>
+                <button class="tab-button" data-category="herramientas">🛠 Herramientas</button>
+                <button class="tab-button" data-category="deportes">👟 Deportes</button>
             </div>
         </section>
 
+
+
     <main class="page">
         <section class="summary-panel">
-            <strong>Actualizado:</strong> 18/05/2026 08:31 · <strong>Fuente:</strong> Más Vendidos general de Mercado Libre Argentina. Compartí cualquier oferta por WhatsApp con un toque.
+            <strong>Actualizado:</strong> 18/05/2026 15:35 · <strong>Fuente:</strong> Más Vendidos general de Mercado Libre Argentina. Compartí cualquier oferta por WhatsApp con un toque.
         </section>
 
 
@@ -385,463 +426,9 @@
 
         <section id="productsGrid" class="grid">
             
-        <article class="product-card" data-search="auriculares bluetooth xiaomi redmi buds 6 play color blanco $ 22.399 más vendidos mercado libre">
-            <div class="rank-badge">#1</div>
-            <a class="image-wrap" href="https://www.mercadolibre.com.ar/auriculares-bluetooth-xiaomi-redmi-buds-6-play-color-blanco/p/MLA41149389?matt_tool=18937564&amp;matt_word=delaraelian" target="_blank" rel="nofollow sponsored noopener">
-                <img src="https://http2.mlstatic.com/D_Q_NP_782183-MLA95705710992_102025-P.webp" alt="Auriculares Bluetooth Xiaomi Redmi Buds 6 Play Color Blanco" loading="lazy" onerror="this.src='https://http2.mlstatic.com/frontend-assets/ml-web-navigation/ui-navigation/6.6.92/mercadolibre/logo__large_plus.png'">
-            </a>
-            <div class="card-body">
-                <span class="trend-label">Más vendido</span>
-                <h2>Auriculares Bluetooth Xiaomi Redmi Buds 6 Play Color Blanco</h2>
-                <p class="price">$ 22.399</p>
-                <div class="action-row">
-                    <a class="buy-button" href="https://www.mercadolibre.com.ar/auriculares-bluetooth-xiaomi-redmi-buds-6-play-color-blanco/p/MLA41149389?matt_tool=18937564&amp;matt_word=delaraelian" target="_blank" rel="nofollow sponsored noopener">Ver oferta</a>
-                    <a class="share-button" href="https://wa.me/?text=%C2%A1Mir%C3%A1%20esta%20oferta%20que%20encontr%C3%A9%20en%20el%20Radar%21%20%F0%9F%94%A5%20Auriculares%20Bluetooth%20Xiaomi%20Redmi%20Buds%206%20Play%20Color%20Blanco%20a%20solo%20%24%2022.399.%20Pod%C3%A9s%20verlo%20ac%C3%A1%3A%20https%3A%2F%2Fwww.mercadolibre.com.ar%2Fauriculares-bluetooth-xiaomi-redmi-buds-6-play-color-blanco%2Fp%2FMLA41149389%3Fmatt_tool%3D18937564%26matt_word%3Ddelaraelian" target="_blank" rel="noopener" aria-label="Compartir por WhatsApp">
-                        <span class="wa-icon" aria-hidden="true">☎</span>
-                        <span>Compartir</span>
-                    </a>
-                </div>
-            </div>
-        </article>
-        
-
-        <article class="product-card" data-search="celular samsung galaxy a16 128gb dual sim 6gb ram - gris $ 495.048 más vendidos mercado libre">
-            <div class="rank-badge">#2</div>
-            <a class="image-wrap" href="https://www.mercadolibre.com.ar/celular-samsung-galaxy-a16-128gb-dual-sim-6gb-ram-gris/p/MLA45748770?matt_tool=18937564&amp;matt_word=delaraelian" target="_blank" rel="nofollow sponsored noopener">
-                <img src="https://http2.mlstatic.com/D_Q_NP_911302-MLA99950138601_112025-P.webp" alt="Celular Samsung Galaxy A16 128gb Dual Sim 6gb Ram - Gris" loading="lazy" onerror="this.src='https://http2.mlstatic.com/frontend-assets/ml-web-navigation/ui-navigation/6.6.92/mercadolibre/logo__large_plus.png'">
-            </a>
-            <div class="card-body">
-                <span class="trend-label">Más vendido</span>
-                <h2>Celular Samsung Galaxy A16 128gb Dual Sim 6gb Ram - Gris</h2>
-                <p class="price">$ 495.048</p>
-                <div class="action-row">
-                    <a class="buy-button" href="https://www.mercadolibre.com.ar/celular-samsung-galaxy-a16-128gb-dual-sim-6gb-ram-gris/p/MLA45748770?matt_tool=18937564&amp;matt_word=delaraelian" target="_blank" rel="nofollow sponsored noopener">Ver oferta</a>
-                    <a class="share-button" href="https://wa.me/?text=%C2%A1Mir%C3%A1%20esta%20oferta%20que%20encontr%C3%A9%20en%20el%20Radar%21%20%F0%9F%94%A5%20Celular%20Samsung%20Galaxy%20A16%20128gb%20Dual%20Sim%206gb%20Ram%20-%20Gris%20a%20solo%20%24%20495.048.%20Pod%C3%A9s%20verlo%20ac%C3%A1%3A%20https%3A%2F%2Fwww.mercadolibre.com.ar%2Fcelular-samsung-galaxy-a16-128gb-dual-sim-6gb-ram-gris%2Fp%2FMLA45748770%3Fmatt_tool%3D18937564%26matt_word%3Ddelaraelian" target="_blank" rel="noopener" aria-label="Compartir por WhatsApp">
-                        <span class="wa-icon" aria-hidden="true">☎</span>
-                        <span>Compartir</span>
-                    </a>
-                </div>
-            </div>
-        </article>
-        
-
-        <article class="product-card" data-search="celular moto g15 4 + 128 gb verde $ 299.999 más vendidos mercado libre">
-            <div class="rank-badge">#3</div>
-            <a class="image-wrap" href="https://www.mercadolibre.com.ar/celular-moto-g15-4-128-gb-verde/p/MLA46255802?matt_tool=18937564&amp;matt_word=delaraelian" target="_blank" rel="nofollow sponsored noopener">
-                <img src="https://http2.mlstatic.com/D_Q_NP_972427-MLA107465605386_032026-P.webp" alt="Celular Moto G15 4 + 128 Gb Verde" loading="lazy" onerror="this.src='https://http2.mlstatic.com/frontend-assets/ml-web-navigation/ui-navigation/6.6.92/mercadolibre/logo__large_plus.png'">
-            </a>
-            <div class="card-body">
-                <span class="trend-label">Más vendido</span>
-                <h2>Celular Moto G15 4 + 128 Gb Verde</h2>
-                <p class="price">$ 299.999</p>
-                <div class="action-row">
-                    <a class="buy-button" href="https://www.mercadolibre.com.ar/celular-moto-g15-4-128-gb-verde/p/MLA46255802?matt_tool=18937564&amp;matt_word=delaraelian" target="_blank" rel="nofollow sponsored noopener">Ver oferta</a>
-                    <a class="share-button" href="https://wa.me/?text=%C2%A1Mir%C3%A1%20esta%20oferta%20que%20encontr%C3%A9%20en%20el%20Radar%21%20%F0%9F%94%A5%20Celular%20Moto%20G15%204%20%2B%20128%20Gb%20Verde%20a%20solo%20%24%20299.999.%20Pod%C3%A9s%20verlo%20ac%C3%A1%3A%20https%3A%2F%2Fwww.mercadolibre.com.ar%2Fcelular-moto-g15-4-128-gb-verde%2Fp%2FMLA46255802%3Fmatt_tool%3D18937564%26matt_word%3Ddelaraelian" target="_blank" rel="noopener" aria-label="Compartir por WhatsApp">
-                        <span class="wa-icon" aria-hidden="true">☎</span>
-                        <span>Compartir</span>
-                    </a>
-                </div>
-            </div>
-        </article>
-        
-
-        <article class="product-card" data-search="power bank cargador portatil 20000mah carga rapida mixio $ 49.999 más vendidos mercado libre">
-            <div class="rank-badge">#4</div>
-            <a class="image-wrap" href="https://articulo.mercadolibre.com.ar/MLA-1399965089-power-bank-cargador-portatil-20000mah-carga-rapida-mixio-_JM?matt_tool=18937564&amp;matt_word=delaraelian" target="_blank" rel="nofollow sponsored noopener">
-                <img src="https://http2.mlstatic.com/D_Q_NP_991674-MLA98648255379_112025-P.webp" alt="Power Bank Cargador Portatil 20000mah Carga Rapida Mixio" loading="lazy" onerror="this.src='https://http2.mlstatic.com/frontend-assets/ml-web-navigation/ui-navigation/6.6.92/mercadolibre/logo__large_plus.png'">
-            </a>
-            <div class="card-body">
-                <span class="trend-label">Más vendido</span>
-                <h2>Power Bank Cargador Portatil 20000mah Carga Rapida Mixio</h2>
-                <p class="price">$ 49.999</p>
-                <div class="action-row">
-                    <a class="buy-button" href="https://articulo.mercadolibre.com.ar/MLA-1399965089-power-bank-cargador-portatil-20000mah-carga-rapida-mixio-_JM?matt_tool=18937564&amp;matt_word=delaraelian" target="_blank" rel="nofollow sponsored noopener">Ver oferta</a>
-                    <a class="share-button" href="https://wa.me/?text=%C2%A1Mir%C3%A1%20esta%20oferta%20que%20encontr%C3%A9%20en%20el%20Radar%21%20%F0%9F%94%A5%20Power%20Bank%20Cargador%20Portatil%2020000mah%20Carga%20Rapida%20Mixio%20a%20solo%20%24%2049.999.%20Pod%C3%A9s%20verlo%20ac%C3%A1%3A%20https%3A%2F%2Farticulo.mercadolibre.com.ar%2FMLA-1399965089-power-bank-cargador-portatil-20000mah-carga-rapida-mixio-_JM%3Fmatt_tool%3D18937564%26matt_word%3Ddelaraelian" target="_blank" rel="noopener" aria-label="Compartir por WhatsApp">
-                        <span class="wa-icon" aria-hidden="true">☎</span>
-                        <span>Compartir</span>
-                    </a>
-                </div>
-            </div>
-        </article>
-        
-
-        <article class="product-card" data-search="audífonos inalámbricos xiaomi redmi buds 6 play bt 5.4 color sky blue $ 22.078 más vendidos mercado libre">
-            <div class="rank-badge">#5</div>
-            <a class="image-wrap" href="https://www.mercadolibre.com.ar/audifonos-inalambricos-xiaomi-redmi-buds-6-play-bt-54-color-sky-blue/p/MLA55462947?matt_tool=18937564&amp;matt_word=delaraelian" target="_blank" rel="nofollow sponsored noopener">
-                <img src="https://http2.mlstatic.com/D_Q_NP_935289-MLA100007937509_122025-P.webp" alt="Audífonos Inalámbricos Xiaomi Redmi Buds 6 Play Bt 5.4 Color Sky Blue" loading="lazy" onerror="this.src='https://http2.mlstatic.com/frontend-assets/ml-web-navigation/ui-navigation/6.6.92/mercadolibre/logo__large_plus.png'">
-            </a>
-            <div class="card-body">
-                <span class="trend-label">Más vendido</span>
-                <h2>Audífonos Inalámbricos Xiaomi Redmi Buds 6 Play Bt 5.4 Color Sky Blue</h2>
-                <p class="price">$ 22.078</p>
-                <div class="action-row">
-                    <a class="buy-button" href="https://www.mercadolibre.com.ar/audifonos-inalambricos-xiaomi-redmi-buds-6-play-bt-54-color-sky-blue/p/MLA55462947?matt_tool=18937564&amp;matt_word=delaraelian" target="_blank" rel="nofollow sponsored noopener">Ver oferta</a>
-                    <a class="share-button" href="https://wa.me/?text=%C2%A1Mir%C3%A1%20esta%20oferta%20que%20encontr%C3%A9%20en%20el%20Radar%21%20%F0%9F%94%A5%20Aud%C3%ADfonos%20Inal%C3%A1mbricos%20Xiaomi%20Redmi%20Buds%206%20Play%20Bt%205.4%20Color%20Sky%20Blue%20a%20solo%20%24%2022.078.%20Pod%C3%A9s%20verlo%20ac%C3%A1%3A%20https%3A%2F%2Fwww.mercadolibre.com.ar%2Faudifonos-inalambricos-xiaomi-redmi-buds-6-play-bt-54-color-sky-blue%2Fp%2FMLA55462947%3Fmatt_tool%3D18937564%26matt_word%3Ddelaraelian" target="_blank" rel="noopener" aria-label="Compartir por WhatsApp">
-                        <span class="wa-icon" aria-hidden="true">☎</span>
-                        <span>Compartir</span>
-                    </a>
-                </div>
-            </div>
-        </article>
-        
-
-        <article class="product-card" data-search="kit de internet vía satélite starlink mini x $ 299.000 más vendidos mercado libre">
-            <div class="rank-badge">#6</div>
-            <a class="image-wrap" href="https://www.mercadolibre.com.ar/kit-de-internet-via-satelite-starlink-mini-x/p/MLA65276331?matt_tool=18937564&amp;matt_word=delaraelian" target="_blank" rel="nofollow sponsored noopener">
-                <img src="https://http2.mlstatic.com/D_Q_NP_807657-MLA106594620491_022026-P.webp" alt="Kit De Internet Vía Satélite Starlink Mini X" loading="lazy" onerror="this.src='https://http2.mlstatic.com/frontend-assets/ml-web-navigation/ui-navigation/6.6.92/mercadolibre/logo__large_plus.png'">
-            </a>
-            <div class="card-body">
-                <span class="trend-label">Más vendido</span>
-                <h2>Kit De Internet Vía Satélite Starlink Mini X</h2>
-                <p class="price">$ 299.000</p>
-                <div class="action-row">
-                    <a class="buy-button" href="https://www.mercadolibre.com.ar/kit-de-internet-via-satelite-starlink-mini-x/p/MLA65276331?matt_tool=18937564&amp;matt_word=delaraelian" target="_blank" rel="nofollow sponsored noopener">Ver oferta</a>
-                    <a class="share-button" href="https://wa.me/?text=%C2%A1Mir%C3%A1%20esta%20oferta%20que%20encontr%C3%A9%20en%20el%20Radar%21%20%F0%9F%94%A5%20Kit%20De%20Internet%20V%C3%ADa%20Sat%C3%A9lite%20Starlink%20Mini%20X%20a%20solo%20%24%20299.000.%20Pod%C3%A9s%20verlo%20ac%C3%A1%3A%20https%3A%2F%2Fwww.mercadolibre.com.ar%2Fkit-de-internet-via-satelite-starlink-mini-x%2Fp%2FMLA65276331%3Fmatt_tool%3D18937564%26matt_word%3Ddelaraelian" target="_blank" rel="noopener" aria-label="Compartir por WhatsApp">
-                        <span class="wa-icon" aria-hidden="true">☎</span>
-                        <span>Compartir</span>
-                    </a>
-                </div>
-            </div>
-        </article>
-        
-
-        <article class="product-card" data-search="filamento 3d 3nmax pla+ 1.75mm 1kg tonos mate impresora 3d color naranja $ 19.500 más vendidos mercado libre">
-            <div class="rank-badge">#7</div>
-            <a class="image-wrap" href="https://www.mercadolibre.com.ar/filamento-3d-3nmax-pla-175mm-1kg-tonos-mate-impresora-3d-color-naranja/p/MLA44960917?matt_tool=18937564&amp;matt_word=delaraelian" target="_blank" rel="nofollow sponsored noopener">
-                <img src="https://http2.mlstatic.com/D_Q_NP_659281-MLA99552267554_122025-P.webp" alt="Filamento 3d 3nmax Pla+ 1.75mm 1kg Tonos Mate Impresora 3d Color Naranja" loading="lazy" onerror="this.src='https://http2.mlstatic.com/frontend-assets/ml-web-navigation/ui-navigation/6.6.92/mercadolibre/logo__large_plus.png'">
-            </a>
-            <div class="card-body">
-                <span class="trend-label">Más vendido</span>
-                <h2>Filamento 3d 3nmax Pla+ 1.75mm 1kg Tonos Mate Impresora 3d Color Naranja</h2>
-                <p class="price">$ 19.500</p>
-                <div class="action-row">
-                    <a class="buy-button" href="https://www.mercadolibre.com.ar/filamento-3d-3nmax-pla-175mm-1kg-tonos-mate-impresora-3d-color-naranja/p/MLA44960917?matt_tool=18937564&amp;matt_word=delaraelian" target="_blank" rel="nofollow sponsored noopener">Ver oferta</a>
-                    <a class="share-button" href="https://wa.me/?text=%C2%A1Mir%C3%A1%20esta%20oferta%20que%20encontr%C3%A9%20en%20el%20Radar%21%20%F0%9F%94%A5%20Filamento%203d%203nmax%20Pla%2B%201.75mm%201kg%20Tonos%20Mate%20Impresora%203d%20Color%20Naranja%20a%20solo%20%24%2019.500.%20Pod%C3%A9s%20verlo%20ac%C3%A1%3A%20https%3A%2F%2Fwww.mercadolibre.com.ar%2Ffilamento-3d-3nmax-pla-175mm-1kg-tonos-mate-impresora-3d-color-naranja%2Fp%2FMLA44960917%3Fmatt_tool%3D18937564%26matt_word%3Ddelaraelian" target="_blank" rel="noopener" aria-label="Compartir por WhatsApp">
-                        <span class="wa-icon" aria-hidden="true">☎</span>
-                        <span>Compartir</span>
-                    </a>
-                </div>
-            </div>
-        </article>
-        
-
-        <article class="product-card" data-search="filamento pla+ gst3d 1.75mm 1kg marrón claro para impresora 3d $ 15.999 más vendidos mercado libre">
-            <div class="rank-badge">#8</div>
-            <a class="image-wrap" href="https://www.mercadolibre.com.ar/filamento-pla-gst3d-175mm-1kg-marron-claro-para-impresora-3d/p/MLA45659669?matt_tool=18937564&amp;matt_word=delaraelian" target="_blank" rel="nofollow sponsored noopener">
-                <img src="https://http2.mlstatic.com/D_Q_NP_632497-MLA99434235102_112025-P.webp" alt="Filamento PLA+ GST3D 1.75mm 1kg Marrón Claro para Impresora 3D" loading="lazy" onerror="this.src='https://http2.mlstatic.com/frontend-assets/ml-web-navigation/ui-navigation/6.6.92/mercadolibre/logo__large_plus.png'">
-            </a>
-            <div class="card-body">
-                <span class="trend-label">Más vendido</span>
-                <h2>Filamento PLA+ GST3D 1.75mm 1kg Marrón Claro para Impresora 3D</h2>
-                <p class="price">$ 15.999</p>
-                <div class="action-row">
-                    <a class="buy-button" href="https://www.mercadolibre.com.ar/filamento-pla-gst3d-175mm-1kg-marron-claro-para-impresora-3d/p/MLA45659669?matt_tool=18937564&amp;matt_word=delaraelian" target="_blank" rel="nofollow sponsored noopener">Ver oferta</a>
-                    <a class="share-button" href="https://wa.me/?text=%C2%A1Mir%C3%A1%20esta%20oferta%20que%20encontr%C3%A9%20en%20el%20Radar%21%20%F0%9F%94%A5%20Filamento%20PLA%2B%20GST3D%201.75mm%201kg%20Marr%C3%B3n%20Claro%20para%20Impresora%203D%20a%20solo%20%24%2015.999.%20Pod%C3%A9s%20verlo%20ac%C3%A1%3A%20https%3A%2F%2Fwww.mercadolibre.com.ar%2Ffilamento-pla-gst3d-175mm-1kg-marron-claro-para-impresora-3d%2Fp%2FMLA45659669%3Fmatt_tool%3D18937564%26matt_word%3Ddelaraelian" target="_blank" rel="noopener" aria-label="Compartir por WhatsApp">
-                        <span class="wa-icon" aria-hidden="true">☎</span>
-                        <span>Compartir</span>
-                    </a>
-                </div>
-            </div>
-        </article>
-        
-
-        <article class="product-card" data-search="cafetera nescafé dolce gusto 230v blanca genio s blanco $ 189.999 más vendidos mercado libre">
-            <div class="rank-badge">#9</div>
-            <a class="image-wrap" href="https://www.mercadolibre.com.ar/cafetera-nescafe-dolce-gusto-230v-blanca-genio-s-blanco/p/MLA18060098?matt_tool=18937564&amp;matt_word=delaraelian" target="_blank" rel="nofollow sponsored noopener">
-                <img src="https://http2.mlstatic.com/D_Q_NP_864306-MLA109736452505_032026-P.webp" alt="Cafetera Nescafé Dolce Gusto 230v Blanca Genio S Blanco" loading="lazy" onerror="this.src='https://http2.mlstatic.com/frontend-assets/ml-web-navigation/ui-navigation/6.6.92/mercadolibre/logo__large_plus.png'">
-            </a>
-            <div class="card-body">
-                <span class="trend-label">Más vendido</span>
-                <h2>Cafetera Nescafé Dolce Gusto 230v Blanca Genio S Blanco</h2>
-                <p class="price">$ 189.999</p>
-                <div class="action-row">
-                    <a class="buy-button" href="https://www.mercadolibre.com.ar/cafetera-nescafe-dolce-gusto-230v-blanca-genio-s-blanco/p/MLA18060098?matt_tool=18937564&amp;matt_word=delaraelian" target="_blank" rel="nofollow sponsored noopener">Ver oferta</a>
-                    <a class="share-button" href="https://wa.me/?text=%C2%A1Mir%C3%A1%20esta%20oferta%20que%20encontr%C3%A9%20en%20el%20Radar%21%20%F0%9F%94%A5%20Cafetera%20Nescaf%C3%A9%20Dolce%20Gusto%20230v%20Blanca%20Genio%20S%20Blanco%20a%20solo%20%24%20189.999.%20Pod%C3%A9s%20verlo%20ac%C3%A1%3A%20https%3A%2F%2Fwww.mercadolibre.com.ar%2Fcafetera-nescafe-dolce-gusto-230v-blanca-genio-s-blanco%2Fp%2FMLA18060098%3Fmatt_tool%3D18937564%26matt_word%3Ddelaraelian" target="_blank" rel="noopener" aria-label="Compartir por WhatsApp">
-                        <span class="wa-icon" aria-hidden="true">☎</span>
-                        <span>Compartir</span>
-                    </a>
-                </div>
-            </div>
-        </article>
-        
-
-        <article class="product-card" data-search="cafetera express gadnic cm3000 3 en 1 15l gris $ 372.049 más vendidos mercado libre">
-            <div class="rank-badge">#10</div>
-            <a class="image-wrap" href="https://www.mercadolibre.com.ar/cafetera-express-gadnic-cm3000-3-en-1-15l-gris/p/MLA60283322?matt_tool=18937564&amp;matt_word=delaraelian" target="_blank" rel="nofollow sponsored noopener">
-                <img src="https://http2.mlstatic.com/D_Q_NP_716087-MLA100066480983_122025-P.webp" alt="Cafetera Express Gadnic Cm3000 3 en 1 15L Gris" loading="lazy" onerror="this.src='https://http2.mlstatic.com/frontend-assets/ml-web-navigation/ui-navigation/6.6.92/mercadolibre/logo__large_plus.png'">
-            </a>
-            <div class="card-body">
-                <span class="trend-label">Más vendido</span>
-                <h2>Cafetera Express Gadnic Cm3000 3 en 1 15L Gris</h2>
-                <p class="price">$ 372.049</p>
-                <div class="action-row">
-                    <a class="buy-button" href="https://www.mercadolibre.com.ar/cafetera-express-gadnic-cm3000-3-en-1-15l-gris/p/MLA60283322?matt_tool=18937564&amp;matt_word=delaraelian" target="_blank" rel="nofollow sponsored noopener">Ver oferta</a>
-                    <a class="share-button" href="https://wa.me/?text=%C2%A1Mir%C3%A1%20esta%20oferta%20que%20encontr%C3%A9%20en%20el%20Radar%21%20%F0%9F%94%A5%20Cafetera%20Express%20Gadnic%20Cm3000%203%20en%201%2015L%20Gris%20a%20solo%20%24%20372.049.%20Pod%C3%A9s%20verlo%20ac%C3%A1%3A%20https%3A%2F%2Fwww.mercadolibre.com.ar%2Fcafetera-express-gadnic-cm3000-3-en-1-15l-gris%2Fp%2FMLA60283322%3Fmatt_tool%3D18937564%26matt_word%3Ddelaraelian" target="_blank" rel="noopener" aria-label="Compartir por WhatsApp">
-                        <span class="wa-icon" aria-hidden="true">☎</span>
-                        <span>Compartir</span>
-                    </a>
-                </div>
-            </div>
-        </article>
-        
-
-        <article class="product-card" data-search="cafetera expresso suono 1.5 l acero inoxidable 20 bar calentamiento de tazas 1350 w color negro/plateado $ 194.999 más vendidos mercado libre">
-            <div class="rank-badge">#11</div>
-            <a class="image-wrap" href="https://www.mercadolibre.com.ar/cafetera-expresso-suono-15-l-acero-inoxidable-20-bar-calentamiento-de-tazas-1350-w-color-negroplateado/p/MLA34238224?matt_tool=18937564&amp;matt_word=delaraelian" target="_blank" rel="nofollow sponsored noopener">
-                <img src="https://http2.mlstatic.com/D_Q_NP_842519-MLA99969939471_112025-P.webp" alt="Cafetera Expresso Suono 1.5 L Acero Inoxidable 20 Bar Calentamiento de Tazas 1350 W Color Negro/Plateado" loading="lazy" onerror="this.src='https://http2.mlstatic.com/frontend-assets/ml-web-navigation/ui-navigation/6.6.92/mercadolibre/logo__large_plus.png'">
-            </a>
-            <div class="card-body">
-                <span class="trend-label">Más vendido</span>
-                <h2>Cafetera Expresso Suono 1.5 L Acero Inoxidable 20 Bar Calentamiento de Tazas 1350 W Color Negro/Plateado</h2>
-                <p class="price">$ 194.999</p>
-                <div class="action-row">
-                    <a class="buy-button" href="https://www.mercadolibre.com.ar/cafetera-expresso-suono-15-l-acero-inoxidable-20-bar-calentamiento-de-tazas-1350-w-color-negroplateado/p/MLA34238224?matt_tool=18937564&amp;matt_word=delaraelian" target="_blank" rel="nofollow sponsored noopener">Ver oferta</a>
-                    <a class="share-button" href="https://wa.me/?text=%C2%A1Mir%C3%A1%20esta%20oferta%20que%20encontr%C3%A9%20en%20el%20Radar%21%20%F0%9F%94%A5%20Cafetera%20Expresso%20Suono%201.5%20L%20Acero%20Inoxidable%2020%20Bar%20Calentamiento%20de%20Tazas%201350%20W%20Color%20Negro%2FPlateado%20a%20solo%20%24%20194.999.%20Pod%C3%A9s%20verlo%20ac%C3%A1%3A%20https%3A%2F%2Fwww.mercadolibre.com.ar%2Fcafetera-expresso-suono-15-l-acero-inoxidable-20-bar-calentamiento-de-tazas-1350-w-color-negroplateado%2Fp%2FMLA34238224%3Fmatt_tool%3D18937564%26matt_word%3Ddelaraelian" target="_blank" rel="noopener" aria-label="Compartir por WhatsApp">
-                        <span class="wa-icon" aria-hidden="true">☎</span>
-                        <span>Compartir</span>
-                    </a>
-                </div>
-            </div>
-        </article>
-        
-
-        <article class="product-card" data-search="caloventor eléctrico winco w116 blanco $ 30.390 más vendidos mercado libre">
-            <div class="rank-badge">#12</div>
-            <a class="image-wrap" href="https://www.mercadolibre.com.ar/caloventor-electrico-winco-w116-blanco/p/MLA15559570?matt_tool=18937564&amp;matt_word=delaraelian" target="_blank" rel="nofollow sponsored noopener">
-                <img src="https://http2.mlstatic.com/D_Q_NP_664232-MLA111164162309_052026-P.webp" alt="Caloventor Eléctrico Winco W116 Blanco" loading="lazy" onerror="this.src='https://http2.mlstatic.com/frontend-assets/ml-web-navigation/ui-navigation/6.6.92/mercadolibre/logo__large_plus.png'">
-            </a>
-            <div class="card-body">
-                <span class="trend-label">Más vendido</span>
-                <h2>Caloventor Eléctrico Winco W116 Blanco</h2>
-                <p class="price">$ 30.390</p>
-                <div class="action-row">
-                    <a class="buy-button" href="https://www.mercadolibre.com.ar/caloventor-electrico-winco-w116-blanco/p/MLA15559570?matt_tool=18937564&amp;matt_word=delaraelian" target="_blank" rel="nofollow sponsored noopener">Ver oferta</a>
-                    <a class="share-button" href="https://wa.me/?text=%C2%A1Mir%C3%A1%20esta%20oferta%20que%20encontr%C3%A9%20en%20el%20Radar%21%20%F0%9F%94%A5%20Caloventor%20El%C3%A9ctrico%20Winco%20W116%20Blanco%20a%20solo%20%24%2030.390.%20Pod%C3%A9s%20verlo%20ac%C3%A1%3A%20https%3A%2F%2Fwww.mercadolibre.com.ar%2Fcaloventor-electrico-winco-w116-blanco%2Fp%2FMLA15559570%3Fmatt_tool%3D18937564%26matt_word%3Ddelaraelian" target="_blank" rel="noopener" aria-label="Compartir por WhatsApp">
-                        <span class="wa-icon" aria-hidden="true">☎</span>
-                        <span>Compartir</span>
-                    </a>
-                </div>
-            </div>
-        </article>
-        
-
-        <article class="product-card" data-search="zapatillas adidas running ultra energy hombre jq0674 $ 89.999 más vendidos mercado libre">
-            <div class="rank-badge">#13</div>
-            <a class="image-wrap" href="https://www.mercadolibre.com.ar/zapatillas-adidas-running-ultra-energy-hombre-jq0674/p/MLA66636025?matt_tool=18937564&amp;matt_word=delaraelian" target="_blank" rel="nofollow sponsored noopener">
-                <img src="https://http2.mlstatic.com/D_Q_NP_689260-MLA108701469337_032026-P.webp" alt="Zapatillas adidas Running Ultra Energy Hombre Jq0674" loading="lazy" onerror="this.src='https://http2.mlstatic.com/frontend-assets/ml-web-navigation/ui-navigation/6.6.92/mercadolibre/logo__large_plus.png'">
-            </a>
-            <div class="card-body">
-                <span class="trend-label">Más vendido</span>
-                <h2>Zapatillas adidas Running Ultra Energy Hombre Jq0674</h2>
-                <p class="price">$ 89.999</p>
-                <div class="action-row">
-                    <a class="buy-button" href="https://www.mercadolibre.com.ar/zapatillas-adidas-running-ultra-energy-hombre-jq0674/p/MLA66636025?matt_tool=18937564&amp;matt_word=delaraelian" target="_blank" rel="nofollow sponsored noopener">Ver oferta</a>
-                    <a class="share-button" href="https://wa.me/?text=%C2%A1Mir%C3%A1%20esta%20oferta%20que%20encontr%C3%A9%20en%20el%20Radar%21%20%F0%9F%94%A5%20Zapatillas%20adidas%20Running%20Ultra%20Energy%20Hombre%20Jq0674%20a%20solo%20%24%2089.999.%20Pod%C3%A9s%20verlo%20ac%C3%A1%3A%20https%3A%2F%2Fwww.mercadolibre.com.ar%2Fzapatillas-adidas-running-ultra-energy-hombre-jq0674%2Fp%2FMLA66636025%3Fmatt_tool%3D18937564%26matt_word%3Ddelaraelian" target="_blank" rel="noopener" aria-label="Compartir por WhatsApp">
-                        <span class="wa-icon" aria-hidden="true">☎</span>
-                        <span>Compartir</span>
-                    </a>
-                </div>
-            </div>
-        </article>
-        
-
-        <article class="product-card" data-search="adidas astrastar casual hombre jr5565 $ 129.999 más vendidos mercado libre">
-            <div class="rank-badge">#14</div>
-            <a class="image-wrap" href="https://www.mercadolibre.com.ar/adidas-astrastar-casual-hombre-jr5565/p/MLA66937776?matt_tool=18937564&amp;matt_word=delaraelian" target="_blank" rel="nofollow sponsored noopener">
-                <img src="https://http2.mlstatic.com/D_Q_NP_635648-MLA108363664240_032026-P.webp" alt="adidas Astrastar Casual Hombre Jr5565" loading="lazy" onerror="this.src='https://http2.mlstatic.com/frontend-assets/ml-web-navigation/ui-navigation/6.6.92/mercadolibre/logo__large_plus.png'">
-            </a>
-            <div class="card-body">
-                <span class="trend-label">Más vendido</span>
-                <h2>adidas Astrastar Casual Hombre Jr5565</h2>
-                <p class="price">$ 129.999</p>
-                <div class="action-row">
-                    <a class="buy-button" href="https://www.mercadolibre.com.ar/adidas-astrastar-casual-hombre-jr5565/p/MLA66937776?matt_tool=18937564&amp;matt_word=delaraelian" target="_blank" rel="nofollow sponsored noopener">Ver oferta</a>
-                    <a class="share-button" href="https://wa.me/?text=%C2%A1Mir%C3%A1%20esta%20oferta%20que%20encontr%C3%A9%20en%20el%20Radar%21%20%F0%9F%94%A5%20adidas%20Astrastar%20Casual%20Hombre%20Jr5565%20a%20solo%20%24%20129.999.%20Pod%C3%A9s%20verlo%20ac%C3%A1%3A%20https%3A%2F%2Fwww.mercadolibre.com.ar%2Fadidas-astrastar-casual-hombre-jr5565%2Fp%2FMLA66937776%3Fmatt_tool%3D18937564%26matt_word%3Ddelaraelian" target="_blank" rel="noopener" aria-label="Compartir por WhatsApp">
-                        <span class="wa-icon" aria-hidden="true">☎</span>
-                        <span>Compartir</span>
-                    </a>
-                </div>
-            </div>
-        </article>
-        
-
-        <article class="product-card" data-search="zapatillas adidas casual cloudfoam comfy mujer jh6830 $ 69.999 más vendidos mercado libre">
-            <div class="rank-badge">#15</div>
-            <a class="image-wrap" href="https://www.mercadolibre.com.ar/zapatillas-adidas-casual-cloudfoam-comfy-mujer-jh6830/p/MLA68907788?matt_tool=18937564&amp;matt_word=delaraelian" target="_blank" rel="nofollow sponsored noopener">
-                <img src="https://http2.mlstatic.com/D_Q_NP_658524-MLA111081501781_042026-P.webp" alt="Zapatillas adidas Casual Cloudfoam Comfy Mujer Jh6830" loading="lazy" onerror="this.src='https://http2.mlstatic.com/frontend-assets/ml-web-navigation/ui-navigation/6.6.92/mercadolibre/logo__large_plus.png'">
-            </a>
-            <div class="card-body">
-                <span class="trend-label">Más vendido</span>
-                <h2>Zapatillas adidas Casual Cloudfoam Comfy Mujer Jh6830</h2>
-                <p class="price">$ 69.999</p>
-                <div class="action-row">
-                    <a class="buy-button" href="https://www.mercadolibre.com.ar/zapatillas-adidas-casual-cloudfoam-comfy-mujer-jh6830/p/MLA68907788?matt_tool=18937564&amp;matt_word=delaraelian" target="_blank" rel="nofollow sponsored noopener">Ver oferta</a>
-                    <a class="share-button" href="https://wa.me/?text=%C2%A1Mir%C3%A1%20esta%20oferta%20que%20encontr%C3%A9%20en%20el%20Radar%21%20%F0%9F%94%A5%20Zapatillas%20adidas%20Casual%20Cloudfoam%20Comfy%20Mujer%20Jh6830%20a%20solo%20%24%2069.999.%20Pod%C3%A9s%20verlo%20ac%C3%A1%3A%20https%3A%2F%2Fwww.mercadolibre.com.ar%2Fzapatillas-adidas-casual-cloudfoam-comfy-mujer-jh6830%2Fp%2FMLA68907788%3Fmatt_tool%3D18937564%26matt_word%3Ddelaraelian" target="_blank" rel="noopener" aria-label="Compartir por WhatsApp">
-                        <span class="wa-icon" aria-hidden="true">☎</span>
-                        <span>Compartir</span>
-                    </a>
-                </div>
-            </div>
-        </article>
-        
-
-        <article class="product-card" data-search="zapatillas adidas casual grand court hombre kj6804 $ 129.999 más vendidos mercado libre">
-            <div class="rank-badge">#16</div>
-            <a class="image-wrap" href="https://www.mercadolibre.com.ar/zapatillas-adidas-casual-grand-court-hombre-kj6804/p/MLA67590827?matt_tool=18937564&amp;matt_word=delaraelian" target="_blank" rel="nofollow sponsored noopener">
-                <img src="https://http2.mlstatic.com/D_Q_NP_889671-MLA110034969335_042026-P.webp" alt="Zapatillas adidas Casual Grand Court Hombre Kj6804" loading="lazy" onerror="this.src='https://http2.mlstatic.com/frontend-assets/ml-web-navigation/ui-navigation/6.6.92/mercadolibre/logo__large_plus.png'">
-            </a>
-            <div class="card-body">
-                <span class="trend-label">Más vendido</span>
-                <h2>Zapatillas adidas Casual Grand Court Hombre Kj6804</h2>
-                <p class="price">$ 129.999</p>
-                <div class="action-row">
-                    <a class="buy-button" href="https://www.mercadolibre.com.ar/zapatillas-adidas-casual-grand-court-hombre-kj6804/p/MLA67590827?matt_tool=18937564&amp;matt_word=delaraelian" target="_blank" rel="nofollow sponsored noopener">Ver oferta</a>
-                    <a class="share-button" href="https://wa.me/?text=%C2%A1Mir%C3%A1%20esta%20oferta%20que%20encontr%C3%A9%20en%20el%20Radar%21%20%F0%9F%94%A5%20Zapatillas%20adidas%20Casual%20Grand%20Court%20Hombre%20Kj6804%20a%20solo%20%24%20129.999.%20Pod%C3%A9s%20verlo%20ac%C3%A1%3A%20https%3A%2F%2Fwww.mercadolibre.com.ar%2Fzapatillas-adidas-casual-grand-court-hombre-kj6804%2Fp%2FMLA67590827%3Fmatt_tool%3D18937564%26matt_word%3Ddelaraelian" target="_blank" rel="noopener" aria-label="Compartir por WhatsApp">
-                        <span class="wa-icon" aria-hidden="true">☎</span>
-                        <span>Compartir</span>
-                    </a>
-                </div>
-            </div>
-        </article>
-        
-
-        <article class="product-card" data-search="smart tv 50 noblex roku tv fhd db50x3110 $ 728.419 más vendidos mercado libre">
-            <div class="rank-badge">#17</div>
-            <a class="image-wrap" href="https://www.mercadolibre.com.ar/smart-tv-50-noblex-roku-tv-fhd-db50x3110/p/MLA67710796?matt_tool=18937564&amp;matt_word=delaraelian" target="_blank" rel="nofollow sponsored noopener">
-                <img src="https://http2.mlstatic.com/D_Q_NP_794177-MLA110171946943_042026-P.webp" alt="Smart Tv 50 Noblex Roku Tv Fhd Db50x3110" loading="lazy" onerror="this.src='https://http2.mlstatic.com/frontend-assets/ml-web-navigation/ui-navigation/6.6.92/mercadolibre/logo__large_plus.png'">
-            </a>
-            <div class="card-body">
-                <span class="trend-label">Más vendido</span>
-                <h2>Smart Tv 50 Noblex Roku Tv Fhd Db50x3110</h2>
-                <p class="price">$ 728.419</p>
-                <div class="action-row">
-                    <a class="buy-button" href="https://www.mercadolibre.com.ar/smart-tv-50-noblex-roku-tv-fhd-db50x3110/p/MLA67710796?matt_tool=18937564&amp;matt_word=delaraelian" target="_blank" rel="nofollow sponsored noopener">Ver oferta</a>
-                    <a class="share-button" href="https://wa.me/?text=%C2%A1Mir%C3%A1%20esta%20oferta%20que%20encontr%C3%A9%20en%20el%20Radar%21%20%F0%9F%94%A5%20Smart%20Tv%2050%20Noblex%20Roku%20Tv%20Fhd%20Db50x3110%20a%20solo%20%24%20728.419.%20Pod%C3%A9s%20verlo%20ac%C3%A1%3A%20https%3A%2F%2Fwww.mercadolibre.com.ar%2Fsmart-tv-50-noblex-roku-tv-fhd-db50x3110%2Fp%2FMLA67710796%3Fmatt_tool%3D18937564%26matt_word%3Ddelaraelian" target="_blank" rel="noopener" aria-label="Compartir por WhatsApp">
-                        <span class="wa-icon" aria-hidden="true">☎</span>
-                        <span>Compartir</span>
-                    </a>
-                </div>
-            </div>
-        </article>
-        
-
-        <article class="product-card" data-search="combo pila alcalina energizer max - 40 aa + 40 aaa $ 99.990 más vendidos mercado libre">
-            <div class="rank-badge">#18</div>
-            <a class="image-wrap" href="https://www.mercadolibre.com.ar/combo-pila-alcalina-energizer-max-40-aa-40-aaa/p/MLA28957235?matt_tool=18937564&amp;matt_word=delaraelian" target="_blank" rel="nofollow sponsored noopener">
-                <img src="https://http2.mlstatic.com/D_Q_NP_823646-MLA99907108781_112025-P.webp" alt="Combo Pila Alcalina Energizer MAX - 40 AA + 40 AAA" loading="lazy" onerror="this.src='https://http2.mlstatic.com/frontend-assets/ml-web-navigation/ui-navigation/6.6.92/mercadolibre/logo__large_plus.png'">
-            </a>
-            <div class="card-body">
-                <span class="trend-label">Más vendido</span>
-                <h2>Combo Pila Alcalina Energizer MAX - 40 AA + 40 AAA</h2>
-                <p class="price">$ 99.990</p>
-                <div class="action-row">
-                    <a class="buy-button" href="https://www.mercadolibre.com.ar/combo-pila-alcalina-energizer-max-40-aa-40-aaa/p/MLA28957235?matt_tool=18937564&amp;matt_word=delaraelian" target="_blank" rel="nofollow sponsored noopener">Ver oferta</a>
-                    <a class="share-button" href="https://wa.me/?text=%C2%A1Mir%C3%A1%20esta%20oferta%20que%20encontr%C3%A9%20en%20el%20Radar%21%20%F0%9F%94%A5%20Combo%20Pila%20Alcalina%20Energizer%20MAX%20-%2040%20AA%20%2B%2040%20AAA%20a%20solo%20%24%2099.990.%20Pod%C3%A9s%20verlo%20ac%C3%A1%3A%20https%3A%2F%2Fwww.mercadolibre.com.ar%2Fcombo-pila-alcalina-energizer-max-40-aa-40-aaa%2Fp%2FMLA28957235%3Fmatt_tool%3D18937564%26matt_word%3Ddelaraelian" target="_blank" rel="noopener" aria-label="Compartir por WhatsApp">
-                        <span class="wa-icon" aria-hidden="true">☎</span>
-                        <span>Compartir</span>
-                    </a>
-                </div>
-            </div>
-        </article>
-        
-
-        <article class="product-card" data-search="tv stick wi-fi smart tv android hdmi tv box fire convertidor color negro tipo de control remoto estándar $ 27.989 más vendidos mercado libre">
-            <div class="rank-badge">#19</div>
-            <a class="image-wrap" href="https://www.mercadolibre.com.ar/tv-stick-wi-fi-smart-tv-android-hdmi-tv-box-fire-convertidor-color-negro-tipo-de-control-remoto-estandar/p/MLA41918674?matt_tool=18937564&amp;matt_word=delaraelian" target="_blank" rel="nofollow sponsored noopener">
-                <img src="https://http2.mlstatic.com/D_Q_NP_810140-MLA99989898035_112025-P.webp" alt="Tv Stick Wi-fi Smart Tv Android Hdmi Tv Box Fire Convertidor Color Negro Tipo de control remoto Estándar" loading="lazy" onerror="this.src='https://http2.mlstatic.com/frontend-assets/ml-web-navigation/ui-navigation/6.6.92/mercadolibre/logo__large_plus.png'">
-            </a>
-            <div class="card-body">
-                <span class="trend-label">Más vendido</span>
-                <h2>Tv Stick Wi-fi Smart Tv Android Hdmi Tv Box Fire Convertidor Color Negro Tipo de control remoto Estándar</h2>
-                <p class="price">$ 27.989</p>
-                <div class="action-row">
-                    <a class="buy-button" href="https://www.mercadolibre.com.ar/tv-stick-wi-fi-smart-tv-android-hdmi-tv-box-fire-convertidor-color-negro-tipo-de-control-remoto-estandar/p/MLA41918674?matt_tool=18937564&amp;matt_word=delaraelian" target="_blank" rel="nofollow sponsored noopener">Ver oferta</a>
-                    <a class="share-button" href="https://wa.me/?text=%C2%A1Mir%C3%A1%20esta%20oferta%20que%20encontr%C3%A9%20en%20el%20Radar%21%20%F0%9F%94%A5%20Tv%20Stick%20Wi-fi%20Smart%20Tv%20Android%20Hdmi%20Tv%20Box%20Fire%20Convertidor%20Color%20Negro%20Tipo%20de%20control%20remoto%20Est%C3%A1ndar%20a%20solo%20%24%2027.989.%20Pod%C3%A9s%20verlo%20ac%C3%A1%3A%20https%3A%2F%2Fwww.mercadolibre.com.ar%2Ftv-stick-wi-fi-smart-tv-android-hdmi-tv-box-fire-convertidor-color-negro-tipo-de-control-remoto-estandar%2Fp%2FMLA41918674%3Fmatt_tool%3D18937564%26matt_word%3Ddelaraelian" target="_blank" rel="noopener" aria-label="Compartir por WhatsApp">
-                        <span class="wa-icon" aria-hidden="true">☎</span>
-                        <span>Compartir</span>
-                    </a>
-                </div>
-            </div>
-        </article>
-        
-
-        <article class="product-card" data-search="kit super termico frío extremo + guantes + medias + cuello $ 37.575 más vendidos mercado libre">
-            <div class="rank-badge">#20</div>
-            <a class="image-wrap" href="https://articulo.mercadolibre.com.ar/MLA-917789892-kit-super-termico-frio-extremo-guantes-medias-cuello-_JM?matt_tool=18937564&amp;matt_word=delaraelian" target="_blank" rel="nofollow sponsored noopener">
-                <img src="https://http2.mlstatic.com/D_Q_NP_983887-MLA94022225983_102025-P.webp" alt="Kit Super Termico Frío Extremo + Guantes + Medias + Cuello" loading="lazy" onerror="this.src='https://http2.mlstatic.com/frontend-assets/ml-web-navigation/ui-navigation/6.6.92/mercadolibre/logo__large_plus.png'">
-            </a>
-            <div class="card-body">
-                <span class="trend-label">Más vendido</span>
-                <h2>Kit Super Termico Frío Extremo + Guantes + Medias + Cuello</h2>
-                <p class="price">$ 37.575</p>
-                <div class="action-row">
-                    <a class="buy-button" href="https://articulo.mercadolibre.com.ar/MLA-917789892-kit-super-termico-frio-extremo-guantes-medias-cuello-_JM?matt_tool=18937564&amp;matt_word=delaraelian" target="_blank" rel="nofollow sponsored noopener">Ver oferta</a>
-                    <a class="share-button" href="https://wa.me/?text=%C2%A1Mir%C3%A1%20esta%20oferta%20que%20encontr%C3%A9%20en%20el%20Radar%21%20%F0%9F%94%A5%20Kit%20Super%20Termico%20Fr%C3%ADo%20Extremo%20%2B%20Guantes%20%2B%20Medias%20%2B%20Cuello%20a%20solo%20%24%2037.575.%20Pod%C3%A9s%20verlo%20ac%C3%A1%3A%20https%3A%2F%2Farticulo.mercadolibre.com.ar%2FMLA-917789892-kit-super-termico-frio-extremo-guantes-medias-cuello-_JM%3Fmatt_tool%3D18937564%26matt_word%3Ddelaraelian" target="_blank" rel="noopener" aria-label="Compartir por WhatsApp">
-                        <span class="wa-icon" aria-hidden="true">☎</span>
-                        <span>Compartir</span>
-                    </a>
-                </div>
-            </div>
-        </article>
-        
-
-        <article class="product-card" data-search="casco para moto integral vertigo v32 dominium negro mate talle m $ 96.969 más vendidos mercado libre">
-            <div class="rank-badge">#21</div>
-            <a class="image-wrap" href="https://www.mercadolibre.com.ar/casco-para-moto-integral-vertigo-v32-dominium-negro-mate-talle-m/p/MLA29722983?matt_tool=18937564&amp;matt_word=delaraelian" target="_blank" rel="nofollow sponsored noopener">
-                <img src="https://http2.mlstatic.com/D_Q_NP_903611-MLA74012689399_012024-P.webp" alt="Casco para Moto Integral Vertigo V32 Dominium Negro Mate Talle M" loading="lazy" onerror="this.src='https://http2.mlstatic.com/frontend-assets/ml-web-navigation/ui-navigation/6.6.92/mercadolibre/logo__large_plus.png'">
-            </a>
-            <div class="card-body">
-                <span class="trend-label">Más vendido</span>
-                <h2>Casco para Moto Integral Vertigo V32 Dominium Negro Mate Talle M</h2>
-                <p class="price">$ 96.969</p>
-                <div class="action-row">
-                    <a class="buy-button" href="https://www.mercadolibre.com.ar/casco-para-moto-integral-vertigo-v32-dominium-negro-mate-talle-m/p/MLA29722983?matt_tool=18937564&amp;matt_word=delaraelian" target="_blank" rel="nofollow sponsored noopener">Ver oferta</a>
-                    <a class="share-button" href="https://wa.me/?text=%C2%A1Mir%C3%A1%20esta%20oferta%20que%20encontr%C3%A9%20en%20el%20Radar%21%20%F0%9F%94%A5%20Casco%20para%20Moto%20Integral%20Vertigo%20V32%20Dominium%20Negro%20Mate%20Talle%20M%20a%20solo%20%24%2096.969.%20Pod%C3%A9s%20verlo%20ac%C3%A1%3A%20https%3A%2F%2Fwww.mercadolibre.com.ar%2Fcasco-para-moto-integral-vertigo-v32-dominium-negro-mate-talle-m%2Fp%2FMLA29722983%3Fmatt_tool%3D18937564%26matt_word%3Ddelaraelian" target="_blank" rel="noopener" aria-label="Compartir por WhatsApp">
-                        <span class="wa-icon" aria-hidden="true">☎</span>
-                        <span>Compartir</span>
-                    </a>
-                </div>
-            </div>
-        </article>
-        
-
-        <article class="product-card" data-search="casco para moto integral hawk rs1 negro mate talla s $ 70.000 más vendidos mercado libre">
-            <div class="rank-badge">#22</div>
-            <a class="image-wrap" href="https://www.mercadolibre.com.ar/casco-para-moto-integral-hawk-rs1-negro-mate-talla-s/p/MLA10292221?matt_tool=18937564&amp;matt_word=delaraelian" target="_blank" rel="nofollow sponsored noopener">
-                <img src="https://http2.mlstatic.com/D_Q_NP_939482-MLA94808571688_102025-P.webp" alt="Casco para moto integral Hawk RS1 negro mate talla S" loading="lazy" onerror="this.src='https://http2.mlstatic.com/frontend-assets/ml-web-navigation/ui-navigation/6.6.92/mercadolibre/logo__large_plus.png'">
-            </a>
-            <div class="card-body">
-                <span class="trend-label">Más vendido</span>
-                <h2>Casco para moto integral Hawk RS1 negro mate talla S</h2>
-                <p class="price">$ 70.000</p>
-                <div class="action-row">
-                    <a class="buy-button" href="https://www.mercadolibre.com.ar/casco-para-moto-integral-hawk-rs1-negro-mate-talla-s/p/MLA10292221?matt_tool=18937564&amp;matt_word=delaraelian" target="_blank" rel="nofollow sponsored noopener">Ver oferta</a>
-                    <a class="share-button" href="https://wa.me/?text=%C2%A1Mir%C3%A1%20esta%20oferta%20que%20encontr%C3%A9%20en%20el%20Radar%21%20%F0%9F%94%A5%20Casco%20para%20moto%20integral%20Hawk%20RS1%20negro%20mate%20talla%20S%20a%20solo%20%24%2070.000.%20Pod%C3%A9s%20verlo%20ac%C3%A1%3A%20https%3A%2F%2Fwww.mercadolibre.com.ar%2Fcasco-para-moto-integral-hawk-rs1-negro-mate-talla-s%2Fp%2FMLA10292221%3Fmatt_tool%3D18937564%26matt_word%3Ddelaraelian" target="_blank" rel="noopener" aria-label="Compartir por WhatsApp">
-                        <span class="wa-icon" aria-hidden="true">☎</span>
-                        <span>Compartir</span>
-                    </a>
-                </div>
-            </div>
-        </article>
-        
-
-        <article class="product-card" data-search="yelmo as-3240 aspiradora para auto recargable usb color gris $ 59.899 más vendidos mercado libre">
-            <div class="rank-badge">#23</div>
-            <a class="image-wrap" href="https://www.mercadolibre.com.ar/yelmo-as-3240-aspiradora-para-auto-recargable-usb-color-gris/p/MLA19719361?matt_tool=18937564&amp;matt_word=delaraelian" target="_blank" rel="nofollow sponsored noopener">
-                <img src="https://http2.mlstatic.com/D_Q_NP_968814-MLA99502468296_112025-P.webp" alt="Yelmo As-3240 Aspiradora Para Auto Recargable Usb Color Gris" loading="lazy" onerror="this.src='https://http2.mlstatic.com/frontend-assets/ml-web-navigation/ui-navigation/6.6.92/mercadolibre/logo__large_plus.png'">
-            </a>
-            <div class="card-body">
-                <span class="trend-label">Más vendido</span>
-                <h2>Yelmo As-3240 Aspiradora Para Auto Recargable Usb Color Gris</h2>
-                <p class="price">$ 59.899</p>
-                <div class="action-row">
-                    <a class="buy-button" href="https://www.mercadolibre.com.ar/yelmo-as-3240-aspiradora-para-auto-recargable-usb-color-gris/p/MLA19719361?matt_tool=18937564&amp;matt_word=delaraelian" target="_blank" rel="nofollow sponsored noopener">Ver oferta</a>
-                    <a class="share-button" href="https://wa.me/?text=%C2%A1Mir%C3%A1%20esta%20oferta%20que%20encontr%C3%A9%20en%20el%20Radar%21%20%F0%9F%94%A5%20Yelmo%20As-3240%20Aspiradora%20Para%20Auto%20Recargable%20Usb%20Color%20Gris%20a%20solo%20%24%2059.899.%20Pod%C3%A9s%20verlo%20ac%C3%A1%3A%20https%3A%2F%2Fwww.mercadolibre.com.ar%2Fyelmo-as-3240-aspiradora-para-auto-recargable-usb-color-gris%2Fp%2FMLA19719361%3Fmatt_tool%3D18937564%26matt_word%3Ddelaraelian" target="_blank" rel="noopener" aria-label="Compartir por WhatsApp">
-                        <span class="wa-icon" aria-hidden="true">☎</span>
-                        <span>Compartir</span>
-                    </a>
-                </div>
-            </div>
+        <article class="empty-state always-visible">
+            <h2>No se pudieron cargar productos en este momento</h2>
+            <p>Mercado Libre puede mostrar una verificación temporal de tráfico. Probá ejecutar el radar nuevamente más tarde.</p>
         </article>
         
         </section>
@@ -849,114 +436,32 @@
 
         <footer>
             <p>Como afiliado, este sitio puede recibir comisión por compras realizadas desde los enlaces publicados. Los precios y disponibilidad pueden cambiar en Mercado Libre.</p>
-            <p><a href="https://whatsapp.com/channel/0029VbCdqxLDDmFRRTP9xs1W" target="_blank" rel="noopener noreferrer" style="color: #25D366; text-decoration: none;"><i class="fab fa-whatsapp"></i> Recibir ofertas por WhatsApp</a></p>
         </footer>
 
     <script>
-        // Lógica del buscador integrado
-        const searchInput = document.getElementById('searchInput');
-        const searchButton = document.getElementById('searchButton');
-        const clearSearch = document.getElementById('clearSearch');
-        const searchIframe = document.getElementById('searchIframe');
-        const searchIframeContainer = document.getElementById('searchIframeContainer');
+        document.addEventListener('DOMContentLoaded', () => {
+            const tabButtons = document.querySelectorAll('.tab-button');
+            const productCards = document.querySelectorAll('.product-card');
 
-        const performSearch = () => {
-            const searchTerm = searchInput.value.trim();
-            if (searchTerm) {
-                searchIframe.src = `https://www.mercadolibre.com.ar/jm/search?as_word=${encodeURIComponent(searchTerm)}&afiliado_id=delaraelian`;
-                searchIframeContainer.style.display = 'block';
-            } else {
-                searchIframe.src = 'about:blank';
-                searchIframeContainer.style.display = 'none';
-            }
-        };
+            tabButtons.forEach(button => {
+                button.addEventListener('click', () => {
+                    const category = button.getAttribute('data-category');
 
-        searchButton.addEventListener('click', performSearch);
+                    // Actualizar estado de los botones
+                    tabButtons.forEach(btn => btn.classList.remove('active'));
+                    button.classList.add('active');
 
-        searchInput.addEventListener('keypress', (event) => {
-            if (event.key === 'Enter') {
-                performSearch();
-            }
+                    // Filtrar productos
+                    productCards.forEach(card => {
+                        if (category === 'all' || card.getAttribute('data-category') === category) {
+                            card.style.display = '';
+                        } else {
+                            card.style.display = 'none';
+                        }
+                    });
+                });
+            });
         });
-
-        clearSearch.addEventListener('click', () => {
-            searchInput.value = '';
-            performSearch();
-            searchInput.focus();
-        });
-
-        // Estilos para el buscador
-        const style = document.createElement('style');
-        style.innerHTML = `
-            .search-section {
-                padding: 15px 0;
-                background: rgba(0,0,0,0.8);
-                backdrop-filter: blur(8px);
-                -webkit-backdrop-filter: blur(8px);
-                border-bottom: 1px solid rgba(255,255,255,0.12);
-                box-shadow: 0 14px 32px rgba(0,0,0,0.55);
-                margin-top: 100px; /* Ajustar según la altura del header */
-            }
-            .search-input-container {
-                width: min(1120px, 100%);
-                margin: 0 auto;
-                padding: 0 12px;
-                display: flex;
-                gap: 5px;
-            }
-            #searchInput {
-                flex-grow: 1;
-                appearance: none;
-                border: 1px solid rgba(0,229,255,0.26);
-                outline: none;
-                border-radius: 14px;
-                background: rgba(255,255,255,0.06);
-                color: var(--text);
-                padding: 10px 40px 10px 12px;
-                font-size: 0.90rem;
-                line-height: 1.1;
-            }
-            #searchInput:focus {
-                border-color: var(--cyan);
-                box-shadow: 0 0 0 3px rgba(0,229,255,0.11);
-            }
-            #searchButton {
-                background-color: var(--cyan);
-                color: #000;
-                border: none;
-                border-radius: 14px;
-                padding: 10px 15px;
-                cursor: pointer;
-                font-size: 1rem;
-                display: flex;
-                align-items: center;
-                justify-content: center;
-            }
-            #searchButton i {
-                color: #000;
-            }
-            #clearSearch {
-                position: relative;
-                width: 29px;
-                height: 29px;
-                border: 0;
-                border-radius: 10px;
-                background: rgba(255,255,255,0.12);
-                color: #fff;
-                font-size: 1rem;
-                cursor: pointer;
-                display: none;
-            }
-            #searchInput:not(:placeholder-shown) + #searchButton + #clearSearch {
-                display: block;
-            }
-            @media (max-width: 700px) {
-                .search-section {
-                    margin-top: 120px; /* Ajustar para móviles */
-                }
-            }
-        `;
-        document.head.appendChild(style);
     </script>
 </body>
 </html>
